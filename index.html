@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅の記録 — 北海道</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #e8e0d0;
+      --cream:   #f7f4ee;
+      --stone:   #9a9085;
+      --charcoal:#2c2926;
+      --ink:     #1a1714;
+      --sky:     #b8cdd9;
+      --mist:    #d4dde3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--ink);
+      padding: 5vh 6vw 6vh;
+      text-align: center;
+    }
+    .site-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 1.2rem;
+    }
+    .site-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 300;
+      color: var(--sand);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .site-title em { font-style: italic; }
+    .site-desc {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(13px, 1.4vw, 15px);
+      color: var(--stone);
+      letter-spacing: 0.1em;
+      line-height: 1.9;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6vh 4vw 4vh;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sand);
+    }
+    .divider span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--stone);
+    }
+
+    /* ── ARTICLES GRID ── */
+    .articles {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4vw 10vh;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+      gap: 4px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--ink);
+      overflow: hidden;
+      position: relative;
+    }
+    .card-image {
+      width: 100%;
+      aspect-ratio: 3/2;
+      overflow: hidden;
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+      transition: transform 8s ease, filter 0.6s ease;
+    }
+    .card:hover .card-image img {
+      transform: scale(1.06);
+      filter: brightness(0.7);
+    }
+    .card-body {
+      padding: 2.4rem 2.4rem 2.8rem;
+      background: var(--ink);
+    }
+    .card-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--sand);
+      margin-bottom: 1rem;
+    }
+    .card-title em { font-style: italic; }
+    .card-desc {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(12px, 1.2vw, 14px);
+      color: var(--stone);
+      line-height: 2;
+      margin-bottom: 1.8rem;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(154,144,133,0.3);
+      padding-top: 1.2rem;
+    }
+    .card-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--stone);
+      opacity: 0.7;
+    }
+    .card-read {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--sand);
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .card:hover .card-read { opacity: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--stone);
+      text-align: center;
+      padding: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(154,144,133,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <p class="site-eyebrow">Travel Journal · Hokkaido</p>
+    <h1 class="site-title">北へ、<em>また北へ。</em></h1>
+    <p class="site-desc">北海道の果てを旅する記録。風と光と静寂を求めて。</p>
+  </header>
+
+  <div class="divider"><span>✦</span></div>
+
+  <main class="articles">
+
+    <a class="card" href="日本最北端への旅.html">
+      <div class="card-image">
+        <img src="旅写真/日本最北端への旅/20241013_135346_DSC02133.JPG" alt="宗谷岬 日本最北端の地碑">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Hokkaido · October 2024</span>
+        <h2 class="card-title">日本最北端<br><em>への旅</em></h2>
+        <p class="card-desc">稚内、宗谷岬、猿払——。日本列島の最果てに立ち、その先に広がる宗谷海峡を見つめた二日間。</p>
+        <div class="card-meta">
+          <span class="card-date">2024.10.12 — 13</span>
+          <span class="card-read">Read Story →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="野付半島トドワラ.html">
+      <div class="card-image">
+        <img src="旅写真/20250918_115126_DSC03131-2.JPG" alt="野付半島の桟橋">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Hokkaido · September 2025</span>
+        <h2 class="card-title">野付半島<br><em>トドワラ</em></h2>
+        <p class="card-desc">地の果てへ。風と静寂が支配する北海道最東端の砂嘴に、消えゆく森と生きる動物たちを訪ねた。</p>
+        <div class="card-meta">
+          <span class="card-date">2025.09.18</span>
+          <span class="card-read">Read Story →</span>
+        </div>
+      </div>
+    </a>
+
+  </main>
+
+  <footer>
+    <p>旅の記録 · Hokkaido Travel Journal</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本最北端への旅 — 宗谷岬・稚内</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #e8e0d0;
+      --cream:   #f7f4ee;
+      --stone:   #9a9085;
+      --charcoal:#2c2926;
+      --ink:     #1a1714;
+      --sky:     #b8cdd9;
+      --mist:    #d4dde3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--charcoal);
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(26,23,20,0.88);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 52px;
+    }
+    .nav-back {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--stone);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--sand); }
+    .nav-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--stone);
+      opacity: 0.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+      filter: brightness(0.65);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(26,23,20,0.65) 100%);
+    }
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      padding: 0 6vw 7vh;
+      color: #fff;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(12px, 1.4vw, 15px);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 300;
+      line-height: 1.08;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title em { font-style: italic; font-weight: 400; }
+    .hero-subtitle {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: clamp(13px, 1.5vw, 16px);
+      opacity: 0.82;
+      letter-spacing: 0.08em;
+    }
+    .hero-date {
+      margin-top: 1.8rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      opacity: 0.55;
+    }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 6vw;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.35);
+      animation: scrollDown 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 9vh 4vw 6vh;
+      text-align: center;
+    }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      border-top: 1px solid var(--stone);
+      border-bottom: 1px solid var(--stone);
+      padding: 4px 14px;
+      margin-bottom: 2rem;
+    }
+    .intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+    .intro h2 em { font-style: italic; }
+    .intro p {
+      font-size: clamp(14px, 1.5vw, 16px);
+      color: var(--charcoal);
+      line-height: 2;
+    }
+    .dropcap::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5em;
+      font-weight: 400;
+      float: left;
+      line-height: 0.78;
+      margin-right: 0.1em;
+      margin-top: 0.12em;
+      color: var(--ink);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 680px;
+      margin: 0 auto 6vh;
+      padding: 0 4vw;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sand);
+    }
+    .divider span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--stone);
+    }
+
+    /* ── FULL BLEED ── */
+    .full-bleed { width: 100%; max-height: 80vh; overflow: hidden; }
+    .full-bleed img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 8s ease;
+    }
+    .full-bleed:hover img { transform: scale(1.04); }
+
+    .caption-strip {
+      background: var(--ink);
+      color: var(--sand);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      padding: 0.9rem 6vw;
+      opacity: 0.85;
+    }
+
+    /* ── TEXT SECTION ── */
+    .text-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 7vh 4vw;
+    }
+    .text-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+      line-height: 1.3;
+    }
+    .text-section h3 em { font-style: italic; }
+    .text-section p {
+      font-size: clamp(14px, 1.5vw, 15.5px);
+      color: var(--charcoal);
+      line-height: 2.1;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ── GRID 2 ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin: 4vh 0;
+    }
+    .grid-2 figure { overflow: hidden; aspect-ratio: 4/3; }
+    .grid-2 figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 6s ease;
+    }
+    .grid-2 figure:hover img { transform: scale(1.05); }
+
+    /* ── GRID 3 ── */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr;
+      gap: 3px;
+      margin: 4vh 0;
+    }
+    .grid-3 figure { overflow: hidden; aspect-ratio: 3/4; }
+    .grid-3 figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 6s ease;
+    }
+    .grid-3 figure:hover img { transform: scale(1.06); }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      margin: 6vh auto;
+      max-width: 620px;
+      padding: 4vh 6vw;
+      border-left: 3px solid var(--charcoal);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 3vw, 30px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── SPLIT ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      margin: 5vh 0;
+    }
+    .split-image { overflow: hidden; }
+    .split-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 8s ease;
+    }
+    .split-image:hover img { transform: scale(1.05); }
+    .split-text {
+      background: var(--ink);
+      color: var(--mist);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vh 6vw;
+    }
+    .split-text .section-tag { color: var(--stone); border-color: var(--stone); }
+    .split-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 300;
+      line-height: 1.35;
+      color: var(--sand);
+      margin: 1.2rem 0;
+    }
+    .split-text h3 em { font-style: italic; }
+    .split-text p {
+      font-size: clamp(13px, 1.3vw, 15px);
+      line-height: 2.1;
+      opacity: 0.8;
+    }
+    .split.reverse { direction: rtl; }
+    .split.reverse > * { direction: ltr; }
+    .split.reverse .split-text { background: var(--charcoal); }
+
+    /* ── PANORAMA ── */
+    .panorama {
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+      position: relative;
+    }
+    .panorama img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .panorama-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(26,23,20,0.7));
+      color: var(--sand);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(14px, 2vw, 20px);
+      font-style: italic;
+      padding: 4rem 6vw 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FACTS ── */
+    .facts-box {
+      background: var(--sand);
+      margin: 6vh auto;
+      max-width: 680px;
+      padding: 4vh 5vw;
+      border-top: 2px solid var(--charcoal);
+    }
+    .facts-box h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 1.5rem;
+    }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem 3rem;
+    }
+    .fact-item dt {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 0.3rem;
+    }
+    .fact-item dd {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── OUTRO ── */
+    .outro {
+      text-align: center;
+      padding: 10vh 4vw 12vh;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .outro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+    .outro h2 em { font-style: italic; }
+    .outro p {
+      font-size: clamp(14px, 1.5vw, 16px);
+      color: var(--charcoal);
+      line-height: 2.1;
+      margin-bottom: 1.4rem;
+    }
+    .outro-mark {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      color: var(--stone);
+      margin-top: 3rem;
+    }
+
+    /* ── NEXT ARTICLE ── */
+    .next-article {
+      display: block;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      height: 40vh;
+      min-height: 260px;
+    }
+    .next-article img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+      transition: transform 8s ease;
+    }
+    .next-article:hover img { transform: scale(1.05); }
+    .next-article-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--sand);
+      text-align: center;
+    }
+    .next-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 1rem;
+    }
+    .next-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 300;
+    }
+    .next-title em { font-style: italic; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--stone);
+      text-align: center;
+      padding: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .split, .split.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .split-text { padding: 5vh 7vw; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-3 figure { aspect-ratio: 4/3 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="site-nav">
+    <a class="nav-back" href="index.html">← すべての旅へ</a>
+    <span class="nav-title">Hokkaido · Oct 2024</span>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <img src="旅写真/日本最北端への旅/20241013_135346_DSC02133.JPG" alt="宗谷岬 日本最北端の地碑">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Hokkaido · October 2024</p>
+      <h1 class="hero-title">日本最北端<br><em>への旅</em></h1>
+      <p class="hero-subtitle">宗谷岬。日本列島の最果てに立ち、その先の海を見つめた。</p>
+      <p class="hero-date">2024.10.12 — 13</p>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <article>
+
+    <!-- ── INTRO ── -->
+    <section class="intro">
+      <span class="section-tag">Prologue</span>
+      <h2>北緯45度31分22秒。<br><em>日本の、いちばん北。</em></h2>
+      <p class="dropcap">地図を眺めると、北海道の最北端はするどく海へ突き出している。その先端が宗谷岬——日本列島で最も北に位置する場所だ。宗谷海峡の向こうには、サハリン（樺太）がうっすらと見えることもある。「日本の端に立ってみたい」というシンプルな衝動に背中を押され、十月の稚内へ向かった。</p>
+    </section>
+
+    <div class="divider"><span>✦</span></div>
+
+    <!-- ── 稚内到着 ── -->
+    <div class="full-bleed">
+      <img src="旅写真/日本最北端への旅/20241012_140657_DSC02080.JPG" alt="稚内駅前">
+    </div>
+    <p class="caption-strip">稚内駅前 — 青空の下、どこかヨーロッパの港町を思わせる駅舎が出迎えてくれた。</p>
+
+    <section class="text-section">
+      <h3>稚内、<em>着。</em></h3>
+      <p>旭川から特急に乗り、約2時間。車窓の風景はじょじょに変わり、人の気配が薄れ、草原と空の割合が増えていく。稚内駅に降り立った瞬間、空気の冷たさと広さに思わず深呼吸した。十月の稚内は、本州よりひと足早く冬の入口に立っている。</p>
+      <p>駅前に佇む異国情緒ある建物を眺めながら、今日の宿へと向かった。</p>
+    </section>
+
+    <!-- ── 北竜門 ── -->
+    <div class="split">
+      <div class="split-image">
+        <img src="旅写真/日本最北端への旅/20241012_141004_DSC02086.JPG" alt="北竜門 全景">
+      </div>
+      <div class="split-text">
+        <span class="section-tag">Day 1</span>
+        <h3>双頭の龍が<br><em>守る門</em></h3>
+        <p>稚内港北防波堤ドームのそばに立つ「北竜門」。2体の青い龍が空へ向かって首をもたげるこのゲートは、稚内と友好都市であるロシア・コルサコフをつなぐ象徴だという。青空の下、龍の目が遠い海を見つめていた。</p>
+      </div>
+    </div>
+
+    <div class="full-bleed">
+      <img src="旅写真/日本最北端への旅/20241012_141013_DSC02087.JPG" alt="北竜門 見上げる">
+    </div>
+    <p class="caption-strip">北竜門 — 見上げると、龍の顔が間近に迫る。その向こうに、青と白の空。</p>
+
+    <!-- ── 宵の稚内 ── -->
+    <section class="text-section">
+      <span class="section-tag">Evening</span>
+      <h3>港町の、<em>長い夕暮れ。</em></h3>
+      <p>十月の北海道、日没は早い。午後4時を過ぎると空が急速に色を変え始め、稚内の街はぼんやりとした青に包まれる。フェリーターミナル周辺を歩きながら、この街が海とともに生きていることを実感した。漁船の灯り、波の音、潮の香り——夜が来る前の、静かな時間。</p>
+    </section>
+
+    <div class="grid-2">
+      <figure>
+        <img src="旅写真/日本最北端への旅/20241012_160211_DSC02093.JPG" alt="稚内フェリーターミナル夕暮れ">
+      </figure>
+      <figure>
+        <img src="旅写真/日本最北端への旅/20241012_160744_DSC02098.JPG" alt="稚内の夕暮れ">
+      </figure>
+    </div>
+
+    <div class="panorama">
+      <img src="旅写真/日本最北端への旅/20241012_161140_DSC02115.JPG" alt="日本海の夕陽">
+      <p class="panorama-caption">雲の切れ間から光が降りてきた。日本海の水平線に、一日が沈んでいく。</p>
+    </div>
+
+    <div class="pull-quote">
+      「光が海面を走るとき、<br>この街の孤独さが、<br>突然美しく見えた。」
+    </div>
+
+    <!-- ── 翌朝・鳥居 ── -->
+    <div class="full-bleed" style="max-height:90vh;">
+      <img src="旅写真/日本最北端への旅/20241013_091501_DSC02117.JPG" alt="海の中の赤い鳥居">
+    </div>
+    <p class="caption-strip">波打ち際に立つ真っ赤な鳥居 — 荒波を背に、静かに佇む朱色の門。</p>
+
+    <section class="text-section">
+      <h3>波の向こうに、<em>赤。</em></h3>
+      <p>翌朝、宿を出て海沿いを歩いた。波が激しく打ち寄せる岩場に、鮮やかな朱色の鳥居が一基立っていた。背後では白波が砕け、風が吹き荒れている。それでも鳥居はまったく揺るがず、ただそこにある。その対比があまりにも鮮烈で、しばらく動けなかった。</p>
+    </section>
+
+    <!-- ── 道の駅・宗谷岬へ ── -->
+    <div class="split reverse">
+      <div class="split-image">
+        <img src="旅写真/日本最北端への旅/20241013_115232_DSC02131.JPG" alt="道の駅わっかない">
+      </div>
+      <div class="split-text">
+        <span class="section-tag">Day 2</span>
+        <h3>道の駅で<br><em>旅の準備を整える</em></h3>
+        <p>「道の駅わっかない」は稚内駅に隣接する、清潔で開放感あふれる施設だ。ここで温かいものを食べ、宗谷岬へ向かう体を整えた。稚内市街から宗谷岬まで約30キロ——オホーツク海沿いの道を走る、最後の行程。</p>
+      </div>
+    </div>
+
+    <!-- ── 宗谷岬 ── -->
+    <section class="text-section">
+      <span class="section-tag">Cape Soya</span>
+      <h3>日本最北端の地、<em>宗谷岬。</em></h3>
+      <p>海沿いの国道を北へ走ること約40分。やがて「日本最北端の地」と刻まれた三角形の碑が視界に入った。思っていたよりずっとシンプルな記念碑。しかしその前に立った瞬間、不思議な感慨が押し寄せた。ここから先に陸はない。日本という国土の、本当の果て。</p>
+      <p>波は高く、風は冷たく、空は驚くほど青かった。</p>
+    </section>
+
+    <div class="grid-2">
+      <figure>
+        <img src="旅写真/日本最北端への旅/20241013_135346_DSC02133.JPG" alt="最北端の地碑 正面">
+      </figure>
+      <figure>
+        <img src="旅写真/日本最北端への旅/20241013_135349_DSC02134.JPG" alt="最北端の地碑 見上げる">
+      </figure>
+    </div>
+
+    <div class="pull-quote">
+      「ここから先に陸はない。<br>あるのは、海と風と、<br>遠いサハリンの影だけ。」
+    </div>
+
+    <div class="grid-3">
+      <figure>
+        <img src="旅写真/日本最北端への旅/20241013_135712_DSC02143.JPG" alt="宗谷岬のカモメ">
+      </figure>
+      <figure>
+        <img src="旅写真/日本最北端への旅/20241013_135733_DSC02145.JPG" alt="宗谷海峡の水平線">
+      </figure>
+      <figure>
+        <img src="旅写真/日本最北端への旅/20241013_135759_DSC02147.JPG" alt="宗谷海峡の地図石碑">
+      </figure>
+    </div>
+
+    <section class="text-section">
+      <p>カモメが一羽、宗谷海峡の上空を悠然と旋回していた。波は白く砕け、水平線は滲むように青い。足元の石碑には、宗谷海峡と日本海とオホーツク海が彫り込まれていた。ここはそれだけの場所——三つの海に挟まれた、地図の端。</p>
+      <p>「最北端に来た」という達成感より、「ここに来て良かった」という静かな充足感が残った。</p>
+    </section>
+
+    <!-- ── 帰り道・猿払 ── -->
+    <div class="panorama" style="height:65vh;">
+      <img src="旅写真/日本最北端への旅/20241013_144626_DSC02156.JPG" alt="猿払村の干草ロール">
+      <p class="panorama-caption">日本最北の村、猿払——広大な牧草地に並ぶ干草ロールが、北の大地の豊かさを伝えていた。</p>
+    </div>
+
+    <section class="text-section">
+      <h3>帰り道に、<em>村があった。</em></h3>
+      <p>宗谷岬を後にして南へ向かう途中、猿払村を通った。「日本最北の村」と書かれた干草ロールが草原に並ぶ光景は、どこかユーモラスで、そして北海道らしく広大だった。青空の下、村は静かに、誇らしげに佇んでいた。</p>
+    </section>
+
+    <!-- ── OUTRO ── -->
+    <div class="outro">
+      <span class="section-tag">Epilogue</span>
+      <h2><em>最果ての地は、</em><br>思いのほか穏やかだった。</h2>
+      <p>「日本の端」というと、どこか荒涼としたイメージを抱いていた。でも実際の宗谷岬は、鮮やかな青空と力強い波と、清潔な空気に満ちていた。終わりではなく、ひとつの場所として、確かにそこに存在していた。</p>
+      <p>北へ来て良かった。そう思いながら、稚内を後にした。</p>
+      <span class="outro-mark">✦</span>
+    </div>
+
+    <!-- ── FACTS ── -->
+    <div class="facts-box">
+      <h4>Travel Notes</h4>
+      <dl class="facts-grid">
+        <div class="fact-item">
+          <dt>場所</dt>
+          <dd>北海道稚内市<br>宗谷岬・稚内港周辺</dd>
+        </div>
+        <div class="fact-item">
+          <dt>訪問日</dt>
+          <dd>2024年10月12〜13日</dd>
+        </div>
+        <div class="fact-item">
+          <dt>アクセス</dt>
+          <dd>旭川から特急で約2時間。<br>宗谷岬は稚内市街から車で約40分。</dd>
+        </div>
+        <div class="fact-item">
+          <dt>見どころ</dt>
+          <dd>宗谷岬最北端の地碑、<br>北竜門、猿払村の牧草地、<br>海の鳥居</dd>
+        </div>
+        <div class="fact-item">
+          <dt>おすすめの季節</dt>
+          <dd>夏〜秋（7月〜10月）<br>冬は積雪・強風に注意</dd>
+        </div>
+        <div class="fact-item">
+          <dt>注意事項</dt>
+          <dd>風が強く気温が低い。<br>防寒着は必携。</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- ── NEXT ARTICLE ── -->
+    <a class="next-article" href="野付半島トドワラ.html">
+      <img src="旅写真/20250918_115126_DSC03131-2.JPG" alt="野付半島トドワラ">
+      <div class="next-article-text">
+        <p class="next-label">Next Story</p>
+        <h2 class="next-title">野付半島 <em>トドワラ</em></h2>
+      </div>
+    </a>
+
+  </article>
+
+  <footer>
+    <p>日本最北端への旅 · Wakkanai & Cape Soya, Hokkaido · October 2024</p>
+  </footer>
+
+</body>
+</html>
